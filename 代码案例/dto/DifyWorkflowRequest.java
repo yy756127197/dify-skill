@@ -1,0 +1,38 @@
+package com.dify.client.dto;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+import java.util.Map;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class DifyWorkflowRequest {
+    
+    /**
+     * Input parameters for the workflow
+     */
+    private Map<String, Object> inputs;
+    
+    /**
+     * blocking or streaming
+     */
+    @JsonProperty("response_mode")
+    private String responseMode;
+    
+    /**
+     * Required user identifier
+     */
+    private String user;
+    
+    /**
+     * Optional files list
+     */
+    private List<DifyChatRequest.DifyFile> files;
+}
